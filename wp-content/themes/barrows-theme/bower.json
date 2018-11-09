@@ -1,0 +1,14 @@
+{
+  "name": "barrows_forrester",
+  "description": "",
+  "authors": [
+    "YOP-Jack <jack@youronlinepresence.co.uk>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,143 @@
+.round-effect {
+-webkit-transition: all 750ms ease; 
+   -moz-transition: all 750ms ease; 
+     -o-transition: all 750ms ease; 
+        transition: all 750ms ease;
+	.button-effect {
+		color: #fff;
+		display: inline-block;
+		width: 280px;
+		text-align: center;
+		height: 50px;
+		line-height: 50px;
+		position: relative;
+		overflow: hidden;
+		background: rgba(236, 0, 140, 0.9);;
+		font-size: 15pt;
+		&.button-cta {
+		    display: inline-block;
+			background: $primary-pink;
+			&a {
+				font-family: 'Poppins', sans-serif;
+				padding: 0 30px;
+				line-height: 64px;
+				color: $white;
+			}
+		}
+		&:before {
+				content: "";
+				position: absolute;
+				z-index: 990;
+				background: rgba(0,0,0,0.1);
+				height: 350px;
+				width: 350px;
+				border-radius: 50%;
+		}
+		&:before {
+			top: 0;
+			left: -110%;
+			-webkit-transition: all 750ms ease; 
+			   -moz-transition: all 750ms ease; 
+			     -o-transition: all 750ms ease; 
+			        transition: all 750ms ease;
+		}
+
+		&:hover:before {
+				top: -100px;
+				left: -30px;
+		}
+	}
+	&.green-btn {
+		.button-cta {
+			background: $primary-green;
+			width: 220px;
+			height: 45px;
+			line-height: 45px;
+			&:before {
+				top: 0;
+				left: -150%;	
+			}
+			&:hover:before {
+					top: -100px;
+					left: -30px;
+			}
+		}
+	}
+	&.blue-btn {
+		.button-cta {
+			background: $primary-lightB;
+		}
+	}
+	&.green-outline {
+		&:before {
+			height: 400px;
+			width: 400px;
+		}
+		.button-cta {
+			border: 2px solid $primary-green;
+			color: #323232;
+			background: transparent;
+			width: 285px;
+			height: 55px;
+			line-height: 55px;
+			text-align: center;
+			transition: all .5s ease;
+			transition-delay: .3s;
+			.button-text {
+				width: 100%;
+				text-align: center;
+				position: absolute;
+				z-index: 991; 
+			}
+			&:hover {
+				transition: all .4s ease;
+				color: #fff;
+			}
+			&:before {
+				background: $primary-green;
+				top: 0;
+				left: -150%;	
+			}
+			&:hover:before {
+					top: -150px;
+					left: -50px;
+			}
+		}
+	}
+}
+
+.green-button {
+	margin: 0 auto;
+}
+
+.card-box {
+	height: 200px;
+	box-shadow: 7px 8px 20px rgba(0,0,0,.5);
+	border: 15px solid $white;
+	position: relative;
+	.card-text{
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		padding: 10px;
+		h4 {
+			color: #fff;
+		}
+		a {
+			color: $primary-pink;
+			font-weight: bold;
+			cursor: pointer;
+		}
+	}
+}
+
+
+.button-effect-submit {
+	padding: 10px 0;
+	border: none;
+	color: #fff;
+	background: $primary-pink !important;
+	font-family: 'Poppins', sans-serif;
+	color: $white;
+	cursor: pointer;
+}

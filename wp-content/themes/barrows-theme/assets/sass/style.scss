@@ -1,0 +1,174 @@
+// Base imports
+$primary-lightB: #00aded;
+@import "settings";
+@import "navs";
+@import "pages";
+@import "buttons";
+@import "media-queries";
+@import "button-effect";
+@import "hover";
+@import "materialize";
+@import "log-in";
+@import "nice-select";
+@import "../css/animate.min.css";
+
+// REMEMBER TO DISABLE DIVI UPDATES BY CHANGING STYLE.CSS VERSION TO LIKE 9001
+
+// Overrides
+.hide{
+	display: none !important;
+	visibility: hidden !important;
+}
+div.et_pb_row.et_pb_row_fullwidth {
+	width: 100% !important;
+	padding: 15px 30px !important;
+    max-width: 100% !important;
+    &.no-padding {
+    	padding: 0 !important;
+    }
+}
+.contact-section {
+	.et_pb_row.et_pb_row_fullwidth {
+		padding: 0 !important;
+	}
+}
+/*
+ * Main styles
+ */
+#et-main-area {
+ 	.full_screen {
+	 	padding: 0 !important;
+	}
+}
+
+.close {
+	height: 40px;
+	width: 40px;
+	position: relative;
+	display: block;
+	&:before, &:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 50%;
+		right: 0;
+		width: 100%;
+		height: 2px;
+		background: #fff;
+	}
+	&:before {
+		transform: rotate(-45deg);
+	}
+	&:after {
+		transform: rotate(	45deg);
+	}
+}
+
+.stamp-calculator {
+	position: fixed;
+	padding: 10px;
+	background: #ecf0f1;
+	top: 50%;
+	left: 50%;
+    top: calc(50% - 150px);
+	left: calc(50% - 210px);
+
+	// transform: translate(-50%,-50%);
+	visibility: hidden;
+	opacity: 0;
+	transition: box-shadow .2s ease-in-out, transform .2s ease-in-out;
+	z-index: 1000;
+    box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
+    border-radius: 5px;
+	.close {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		cursor: pointer;
+		&:before, &:after {
+			// background: $primary-pink;
+		}
+	}
+	&.ui-draggable-dragging {
+		transform: scale(1.02);
+		box-shadow: 20px 19px 38px 3px rgba(0, 0, 0, 0.16), 0px 15px 46px 8px rgba(0,0,0,.12), 1px 17px 15px -7px rgba(0,0,0,.2);
+	}
+	.title {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		background: $primary-pink;
+		color: #fff;
+	    padding: 15px 20px;
+	    border-radius: 5px 5px 0 0;
+	    cursor: move;
+	}
+	.stamp-duty-calculator {
+	    padding: 80px 10px;
+	    width: 400px;
+	    .stamp-duty-calculator-results {
+	    	input[type="text"] {
+	    		border-bottom: none !important;
+				color: $primary-green !important;
+				padding-left: 0;
+				font-weight: bold;
+	    	}
+	    }
+	}
+	label, h4 {
+		color: rgba(0,0,0,0.8) !important;	
+	}
+	label {
+		&:nth-child(1) {
+        	color: $primary-green !important;
+        	font-weight: bold;
+        	font-size: 20px;
+      	}
+	}
+	button {
+		background: #fff !important;
+		margin: 10px 0;
+	    position: absolute;
+	    right: 10px;
+	    bottom: 10px;
+	    color: #333 !important;
+    	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    	transition: all .5s ease;
+	    &:hover {
+			background: $primary-pink !important;
+			color: #fff !important;
+	    }
+	}
+	input[type="text"] {
+		background: transparent !important;
+		border: 0;
+		border-bottom: 2px solid rgba(0,0,0,0.4) !important;
+		width: 100%;
+		padding: 10px 15px;
+		transition: all .5s ease;
+	    margin: 10px 0;
+		&:focus {
+			border-bottom: 2px solid $primary-lightB !important;
+			color: $primary-lightB;
+			&::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+			    color: $primary-lightB;
+				transition: all .5s ease;
+			}
+
+			&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			    color: $primary-lightB;
+				transition: all .5s ease;
+			}
+
+			&::-ms-input-placeholder { /* Microsoft Edge */
+			    color: $primary-lightB;
+				transition: all .5s ease;
+			}
+		}
+	}
+	&.active {
+		visibility: visible;
+		opacity: 1;
+	}
+}

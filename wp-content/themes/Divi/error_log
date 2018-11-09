@@ -1,0 +1,1 @@
+[30-Apr-2018 09:16:57 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/yopmockup/public_html/barrows/wp-content/themes/Divi/index.php on line 1

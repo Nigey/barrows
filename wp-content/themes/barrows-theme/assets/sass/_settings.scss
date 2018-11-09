@@ -1,0 +1,46 @@
+// We use these as default colours throughout
+$primary-pink:	#ec008c;
+$primary-darkB: #2f4961;
+$primary-lightB: #00aded;
+$primary-green: #8cc63f;
+// $alert-colour: #f04124;
+// $success-colour: #43AC6A;
+// $warning-colour: #f08a24;
+// $info-colour: #a0d3e8;
+// $header-colour: #ACACAC;
+$section-colour: #E5E5ED;
+$inputs-colour: #E1E1E1;
+
+$white       : #FFFFFF;
+$off-white   : #FDFDFB;
+$ghost       : #FEFEFE;
+$snow        : #F9F9F9;
+$luke-warm   : #F6FEFF;
+// $vapor       : #F6F6F6;
+// $white-smoke : #F5F5F5;
+$stone       : #F2F2F2;
+// $silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$gainsboro   : #DDDDDD;
+$iron        : #CCCCCC;
+// $base        : #AAAAAA;
+$base        : #ACACAC;
+$aluminum    : #999999;
+// $jumbo       : #888888;
+// $monsoon     : #777777;
+$steel       : #666666;
+$charcoal    : #555555;
+// $tuatara     : #444444;
+$oil         : #333333;
+$jet         : #222222;
+$black       : #000000;
+
+@keyframes marquee {
+  0%   { text-indent: 137.5em }
+  100% { text-indent: -11.5em }
+}
+
+
+.dark-blue {
+	background: $primary-darkB !important;
+}
