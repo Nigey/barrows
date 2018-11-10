@@ -466,19 +466,6 @@ $how_many_pages = ceil($how_many_times);
 		</div>
 	</div>
 
-<!-- 	<div class="tool_bar_2">
--->
-
-
-<!--
-		<div class="advanced_search right">
-
-			<a class="advanced_search_btn btn waves-effect green wave-light">Advanced Search</a>
-
-		</div>
-
-	</div> -->
-
 	<div class="property-results">
 		<div class="row">
 				<?php
