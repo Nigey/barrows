@@ -31,44 +31,44 @@
 	if (empty($maxBeds)) { $maxBeds = "999"; }
 	if (empty($per_page)) { $per_page = "9"; }
 
-	$xml = file_get_contents('http://services.jupix.co.uk/api/get_properties.php?clientID=cda934fd9f9ae99723dd1ade696d2143&passphrase=b556bed09f7d772a2f83aa05c256005a');
+	// $xml = file_get_contents('http://services.jupix.co.uk/api/get_properties.php?clientID=cda934fd9f9ae99723dd1ade696d2143&passphrase=b556bed09f7d772a2f83aa05c256005a');
 
-	file_put_contents('property.xml', $xml);
+	// file_put_contents('property.xml', $xml);
 
-	$url_link = "property.xml";
-	$url_data = simplexml_load_file($url_link);
-	$total_count = count($url_data->property);
+	// $url_link = "property.xml";
+	// $url_data = simplexml_load_file($url_link);
+	// $total_count = count($url_data->property);
 
- 	foreach($url_data->property as $property) {
+ 	// foreach($url_data->property as $property) {
 
-		$price = $property->price;
-		$address1 = $property->addressName;
-		$address2 = $property->addressStreet;
-		$address3 = $property->address3;
-		$property_name = $address1 . ", " . $address2 . ", " . $address3;
-		$beds = $property->propertyBedrooms;
+	// 	$price = $property->price;
+	// 	$address1 = $property->addressName;
+	// 	$address2 = $property->addressStreet;
+	// 	$address3 = $property->address3;
+	// 	$property_name = $address1 . ", " . $address2 . ", " . $address3;
+	// 	$beds = $property->propertyBedrooms;
 
-		$results = stripos($property_name, $location);
+	// 	$results = stripos($property_name, $location);
 
-		if ($price > $minPrice && $price < $maxPrice) {
-			if ($beds >= $minBeds && $beds <= $maxBeds ) {
-				if ($location === false ){
-						$loop_times_search++;
-				} else {
-					if ($results !== false) {
-					    echo "<noscript>Found!</noscript>";
-						$loop_times_search++;
-					} else {
-					    echo "<noscript>not Found!</noscript>";
-					}
-				}
-			}
-		}
-	}
+	// 	if ($price > $minPrice && $price < $maxPrice) {
+	// 		if ($beds >= $minBeds && $beds <= $maxBeds ) {
+	// 			if ($location === false ){
+	// 					$loop_times_search++;
+	// 			} else {
+	// 				if ($results !== false) {
+	// 				    echo "<noscript>Found!</noscript>";
+	// 					$loop_times_search++;
+	// 				} else {
+	// 				    echo "<noscript>not Found!</noscript>";
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 
-	if ($loop_times_search == 0) {
-		$none_found = true;
-	}
+	// if ($loop_times_search == 0) {
+	// 	$none_found = true;
+	// }
 
 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
@@ -170,16 +170,6 @@ $args = array(
 	            'compare' => 'LIKE',
             )
         ),
-        // array(
-        //     'key' => 'property-propertyownabletype',
-        //     'compare' => 'LIKE',
-        //     'value' => $type,
-        // ),
-        // array(
-        //     'key' => 'property-bedrooms',
-        //     'compare' => '>=',
-        //     'value' => $min_beds,
-        // ),
         array(
             'key' => 'property-price',
             'value' => array($minPrice, $maxPrice),
