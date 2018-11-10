@@ -1,32 +1,32 @@
 <?php get_header();
-
-
-
+ 
+ 
+ 
 	$selling_type = $_GET['selling_type'];
-
+ 
 	$minPrice = $_GET['minPrice'];
-
+ 
 	$maxPrice = $_GET['maxPrice'];
-
+ 
 	$location = $_GET['location'];
-
+ 
 	$prop_type = $_GET['prop_type'];
-
+ 
 	$minBeds = $_GET['minBeds'];
-
+ 
 	$maxBeds = $_GET['maxBeds'];
-
+ 
 	$include_sold = $_GET['include_sold'];
-	
+ 
 	if ($include_sold == "yes") $include_sold = true;
 	else if ($include_sold == "no") $include_sold = false;
-
+ 
 	$page = $_GET['page_'];
-
+ 
 	$per_page = $_GET['per_page'];
 
 	if( empty($per_page)) {
-
+ 
 		$per_page = 3;
 
 	}
@@ -434,13 +434,9 @@ $how_many_pages = ceil($how_many_times);
 										<option value="2000000">£  2,000,000</option>
 
 										<option value="2500000">£  2,500,000</option>
-
 										<option value="3000000">£  3,000,000</option>
-
 										<option value="3500000">£  3,500,000</option>
-
 										<option value="4000000">£  4,000,000</option>
-
 										<option value="4500000">£  4,500,000</option>
 
 										<option value="5000000">£  5,000,000</option>
@@ -737,7 +733,7 @@ $how_many_pages = ceil($how_many_times);
 					<select onchange='this.form.submit()' name="per_page">
 
                         <option <?php if($per_page == 3){ echo "selected"; } ?> value="3">3</option>
-                        
+
 						<option <?php if($per_page == 9){ echo "selected"; } ?> value="9">9</option>
 
 						<option <?php if($per_page == 12){ echo "selected"; } ?> value="12">12</option>
@@ -811,20 +807,20 @@ $how_many_pages = ceil($how_many_times);
 						$receptionrooms = get_post_meta( get_the_ID(), 'property-receptionrooms', TRUE );
 						$bedrooms = get_post_meta( get_the_ID(), 'property-bedrooms', TRUE );
 						$bathrooms = get_post_meta( get_the_ID(), 'property-bathrooms', TRUE );
-						
+
 						
 						$underoffer = get_post_meta( get_the_ID(), 'underoffer', TRUE );
 						$offeraccepted = get_post_meta( get_the_ID(), 'offeraccepted', TRUE );
 
                         $displayForStatus = "visible";
                         if ($underoffer == null && $offeraccepted == null) $displayForStatus = "none";
-                        
+
                         $statusForProperty = "";
                         if ($underoffer) $statusForProperty = "Under Offer";
                         if ($offeraccepted) $statusForProperty = "Offer Accepted";
-                        
+
                         if ($include_sold == "false" && $displayForStatus == "visible") continue; //Skip sold
-                        
+
 						if(empty($bathrooms)) {
 
 					    	$bathrooms = 0;
@@ -839,7 +835,7 @@ $how_many_pages = ceil($how_many_times);
 						ob_start();
 						the_content();
 						$content = ob_get_clean();
-						
+
 						//echo $content;
 						if (preg_match('(<p>.*[\r\n]?<\/p>)', $content, $matches)) { $content = $matches[0]; } //some descriptions break the page for some reason (Wordpresss bug), so I regex it all out
 
@@ -856,7 +852,7 @@ $how_many_pages = ceil($how_many_times);
 						$price = number_format($price);
 						$latitude = get_post_meta( get_the_ID(), 'property-latitude', TRUE );
 						$longitude = get_post_meta( get_the_ID(), 'property-longitude', TRUE );
-                        
+
 
 					    if (preg_match("(([A-Z]{1,2}[0-9]{1,2})($|[ 0-9]))", trim($postcode), $match)) {
 
@@ -899,9 +895,9 @@ $how_many_pages = ceil($how_many_times);
 													<div class="icon"><img src="https://www.barrowsandforrester.co.uk/wp-content/uploads/2018/09/bathroom-1.png"><?php echo $bathrooms; ?></div>
 												</div>
 											</h3>
-											
+
 											<?php if(strlen($content) < 25) $content="No Description <br><br>"; //Filling so it does not miss align the properties?>
-											
+
 											<div class="description"><?php echo substrwords($content,160, "..."); ?></div>
 
 											<a href="/property-details/?property_id=<?php echo $post->ID; ?>&type=<?php echo $selling_type ?>" class="btn waves-effect pink-outline">Details</a>
@@ -1414,86 +1410,8 @@ $how_many_pages = ceil($how_many_times);
 		            'add_fragment' => '',
 
 		        ) );
-
-
-
-
-				// echo $loop_times_search;
-
-				// echo $how_many_pages;
-
-
-
-				// if ($how_many_pages >= 1 ) {
-
-
-
-
-
-				// 	if ($page == 1 ) {
-
-
-
-				// 		$output_loop = array(($page + 0), ($page + 1), ($page + 2), ($page + 3), ($page + 4));
-
-
-
-				// 	} else if ($page == 2) {
-
-
-
-				// 		$output_loop = array(($page - 1), ($page + 0), ($page + 1), ($page + 2), ($page + 3));
-
-
-
-				// 	} else if ($page >= 3) {
-
-				// 		$output_loop = array(($page - 2), ($page - 1), ($page + 0), ($page + 1), ($page + 2));
-
-
-
-				// 	}
-
-
-
-				// 	foreach ($output_loop as &$page_to_display) {
-
-
-
-				// 		if ($page == $page_to_display){
-
-				// 			$display_active = "active_item";
-
-				// 		} else {
-
-				// 			$display_active = "";
-
-				// 		}
-
-				// 		$pass_variables = "&selling_type={$selling_type}&minPrice=".$minPrice."&maxPrice=".$maxPrice ."&location=".$location."&per_page=".$per_page;
-
-				// 		$ouput_pagination = " <a href='../wp-content/themes/barrows-theme/includes/search.php?page_=".$page_to_display.$pass_variables."' class='pagination_item ".$display_active."'>".$page_to_display."</a>";
-
-				// 		if ($page_to_display <= $how_many_pages) {
-
-				// 			echo $ouput_pagination;
-
-				// 		}
-
-
-
-				// 	}
-
-				// }
-
 			?>
-
 		</div>
-
 	</div>
-
 </div>
-
-
-
 <?php get_footer(); ?>
