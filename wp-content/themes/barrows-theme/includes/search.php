@@ -9,17 +9,14 @@
 		$selling_type     = $_POST['selling_type'];
 	}
 
-	$minBeds     = $_POST['minBeds'];
-	$maxBeds     = $_POST['maxBeds'];
-	$location     = $_POST['location'];
-	$show_search     = $_POST['show_search'];
+	$minBeds = $_POST['minBeds'];
+	$maxBeds = $_POST['maxBeds'];
+	$location = $_POST['location'];
+	$show_search = $_POST['show_search'];
 
 // $apikey = "71BF5613-5E5F-4810-A561-F38C52D0F8C8";
-
 // $eaid         = $_POST['eaid'];
-
 // $xslt         = $_POST['xslt'];
-
 // $guid         = $_POST['sessionGUID'];
 
 if (isset($_GET['minPrice']))
