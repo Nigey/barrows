@@ -76,5 +76,5 @@ if (isset($_GET['show_search']))
 
 $include_sold     = $_POST['group2'];
 	header('Location: http://barrows.youronlinepresence.uk/search-property?&selling_type='. $selling_type .'&minPrice=' . $minPrice . '&maxPrice=' . $maxPrice . '&location=' . $location . '&prop_type=' . $prop_type . '&minBeds=' . $minBeds . '&maxBeds=' . $maxBeds . '&include_sold=' . $include_sold . '&per_page=' . $per_page );
-die();
+	die();
 ?>
