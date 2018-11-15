@@ -120,7 +120,7 @@
                 //$postID = getLatestPropertyID();
 
                 $imageNameTitle = rand(1000000, 1000000000);
-                $imageURL = $property['Images'][0]['Url'];
+                $imageURL = $property['Images'][0]['Url'] . '?width=800';
                 $uploaddir = wp_upload_dir();
                 $filename = rand(100000, 100000000000) . '.jpg';
                 $uploadfile = $uploaddir['path'] . '/' . $filename;
@@ -209,7 +209,7 @@
                 {
                     $filename = rand(100000, 100000000000) . '.jpg';
                     $uploadfile = $uploaddir['path'] . '/' . $filename;
-                    $contents = file_get_contents($pImage['Url']);
+                    $contents = file_get_contents($pImage['Url'] . '?width=800');
                     $savefile = fopen($uploadfile, 'w');
                     fwrite($savefile, $contents);
                     fclose($savefile);

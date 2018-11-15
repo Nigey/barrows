@@ -121,7 +121,7 @@
             global $wpdb;
             $propertyMeta = $wpdb->get_results( "SELECT * FROM `wp_postmeta` WHERE `post_id`='$postid' AND `meta_key`='_thumbnail_id'");
             $propertyMeta = removeStdObject($propertyMeta);
-            return $propertyMeta . "?width=250px";
+            return $propertyMeta;// . "?width=250px";
         }
 
         /* Function to remove all properties which have been automatically added */
