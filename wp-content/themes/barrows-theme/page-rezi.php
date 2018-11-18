@@ -66,12 +66,18 @@
 
 
         /* First of all, remove the properties which have been added to sync correctly */
-
-       removeAddedProperties(returnListOfProperties());
+        // No need to remove all. We want them to keep their existing links.
+    //    removeAddedProperties(returnListOfProperties());
 
 
 
         foreach ($properties as $property) {
+
+            // Only add those that don't already exist.
+            $doesPropertyExist = propertyExists($property);
+            if($doesPropertyExist) {
+                continue;
+            }
 
             $encoded_url = rand(1000000, 1000000000);
             $description1 = $property['Descriptions'][1]['Text'];
@@ -116,11 +122,31 @@
                 /* Insert query */
                 $postID = insertMainProperty($insert_main_property);
 
+                /* Insert the URL for all images found */
+                $property_images = $property['Images'];
+
+                $imageURL = $property['Images'][0]['Url'] . '?width=800';
+
+                foreach ($property_images as $pImage)
+                {
+                    if($pImage['IsPrimaryImage']) {
+                        $imageURL = $pImage['Url'] . '?width=800';
+                    }
+
+                    $filename = rand(100000, 100000000000) . '.jpg';
+                    $uploadfile = $uploaddir['path'] . '/' . $filename;
+                    $contents = file_get_contents($pImage['Url'] . '?width=800');
+                    $savefile = fopen($uploadfile, 'w');
+                    fwrite($savefile, $contents);
+                    fclose($savefile);
+                    $timestamp = date('Y/m');
+                    insertImage($postID, get_site_url() . '/wp-content/uploads/'.$timestamp.'/' . $filename);
+                }
+
                 /* Get the latest ID from the property which has just been created */
                 //$postID = getLatestPropertyID();
 
                 $imageNameTitle = rand(1000000, 1000000000);
-                $imageURL = $property['Images'][0]['Url'] . '?width=800';
                 $uploaddir = wp_upload_dir();
                 $filename = rand(100000, 100000000000) . '.jpg';
                 $uploadfile = $uploaddir['path'] . '/' . $filename;
@@ -200,22 +226,6 @@
                 }
 
                 $uploaddir = wp_upload_dir();
-
-                /* Insert the URL for all images found */
-
-                $property_images = $property['Images'];
-
-                foreach ($property_images as $pImage)
-                {
-                    $filename = rand(100000, 100000000000) . '.jpg';
-                    $uploadfile = $uploaddir['path'] . '/' . $filename;
-                    $contents = file_get_contents($pImage['Url'] . '?width=800');
-                    $savefile = fopen($uploadfile, 'w');
-                    fwrite($savefile, $contents);
-                    fclose($savefile);
-                    $timestamp = date('Y/m');
-                    insertImage($postID, get_site_url() . '/wp-content/uploads/'.$timestamp.'/' . $filename);
-                }
 
                 /* Query insert the property address details */
 

@@ -83,7 +83,7 @@
             } else {
                 $photos = $wpdb->get_results( "SELECT * FROM `wp_postmeta` WHERE `meta_key`='gallery' AND `post_id`='$propertyID'");
                 $photos = removeStdObject($photos);
-                return $photos;
+                return array_reverse($photos);
             }
         }
 
