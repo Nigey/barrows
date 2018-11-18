@@ -121,7 +121,22 @@
             global $wpdb;
             $propertyMeta = $wpdb->get_results( "SELECT * FROM `wp_postmeta` WHERE `post_id`='$postid' AND `meta_key`='_thumbnail_id'");
             $propertyMeta = removeStdObject($propertyMeta);
-            return $propertyMeta . "?width=250px";
+            return $propertyMeta;
+        }
+
+        /* Will return a boolean indicating whether this property exists in the wordpress database. */
+        function propertyExists($property) {
+            
+            global $wpdb;
+            $postId = $property['post_id'];
+            $results = $wpdb->get_results( "SELECT * FROM `wp_posts` WHERE `ID` = '$postId'" );
+
+            if(count($results)> 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
 
         /* Function to remove all properties which have been automatically added */
@@ -152,7 +167,6 @@
                 $wpdb->delete( 'wp_postmeta', array( 'post_id' => $postid ) );
                 $wpdb->delete( 'wp_posts', array( 'ID' => $thumbnail_id ) );
             }
-
         }
 
         /* Get the URL for image thumbnail */

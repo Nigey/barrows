@@ -456,6 +456,23 @@ $how_many_pages = ceil($how_many_times);
 		</div>
 	</div>
 
+	<!-- NIGELS TESTS -->
+<?php
+// if (isset($_GET['propertyExistsID'])) {
+    
+//     $result = propertyExists($_GET['propertyExistsID']);
+    
+//     if($result) {
+//         echo $result;
+//     } else {
+//         echo "No result found";
+//     }
+// }
+// else{
+//     echo "No propertyExistsID id set.";
+// }
+?>
+
 	<div class="property-results">
 		<div class="row">
 				<?php
@@ -519,15 +536,15 @@ $how_many_pages = ceil($how_many_times);
 					    if (preg_match("(([A-Z]{1,2}[0-9]{1,2})($|[ 0-9]))", trim($postcode), $match)) {
 						   $postcode=$match[1];
 						}
-
 							 if (has_post_thumbnail( $post->ID ) ):
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
                                 $imageURL = returnPropertyThumbnailURL($post->ID);
 
-								// echo $imageURL;
+								//echo $imageURL;
 
 								else:
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+								
 								endif;
 		?>
 
