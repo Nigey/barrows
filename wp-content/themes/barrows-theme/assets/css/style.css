@@ -848,9 +848,14 @@ header#main-header .round-effect .button-effect:before {
     border: none;
     color: #fff; }
 .page-contact-us .contact-locations-box .et_pb_promo_description {
+  min-height:46px;
   position: relative;
   top: 50%;
   transform: translateY(-50%); }
+
+  .description {
+    min-height:46px;
+  }
 
 @media screen and (max-width: 980px) {
   .page-contact-us #map {

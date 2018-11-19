@@ -5,6 +5,10 @@
     background: #fff url('./ajax-loader.gif') center center no-repeat;
 }
 
+.description {
+    min-height:46px;
+  }
+
 /* Icons */
 @font-face
 {
